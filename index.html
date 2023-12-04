@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Advice generator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+<main>
+<div class="card">
+  <h1>Advice #<span id="adviceNum"></span></h1>
+  <p id="quote"></p>
+  <img class="divider desktop" alt="A divider" src="./images/pattern-divider-desktop.svg">
+  <img class="divider mobile" alt="A divider" src="images/pattern-divider-mobile.svg">
+  <div class="button" id="button" onclick="getQuote()">
+    <img class="die" alt="A die" src="images/icon-dice.svg">
+  </div>
+</div>
+</main>  
+<script>
+let adviceNum = document.getElementById("adviceNum");
+let quote = document.getElementById("quote");
+let button = document.getElementById("button");
+let card = document.querySelector(".card");
+
+let quoteNum = "";
+let fetchedQuote = "";
+
+// ----- FUNCTION FOR FETCHING QUOTES -----
+// ----- FUNCTION FOR FETCHING QUOTES -----
+function getQuote(){
+  // --- FADE OUT QUOTE AND # ---
+  quote.style.setProperty("opacity",0);
+  adviceNum.style.setProperty("opacity",0);
+  // --- FETCH DATA ---
+  fetch("https://api.adviceslip.com/advice")
+  .then(resp=>resp.json())
+  .then(data=>{
+    // --- ASSIGN QUOTE NUMBER ---
+    quoteNum = data.slip.id;
+    // --- ASSIGN QUOTE ---
+    fetchedQuote = data.slip.advice;
+    // --- UPDATE TEXT ON SCREEN ---
+    adviceNum.textContent=`${quoteNum}`;
+    quote.textContent=`“${fetchedQuote}”`;
+    // --- FADEIN QUOTE AND # ---
+    adviceNum.style.setProperty("opacity",1);
+    quote.style.setProperty("opacity",1);
+  });
+} // --- END OF getQuote FUNCTION ---
+
+// ----- FETCH A QUOTE IMMEDIATELY ON PAGELOAD -----
+getQuote();
+
+</script>
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</body>
+</html>

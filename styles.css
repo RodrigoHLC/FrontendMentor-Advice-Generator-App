@@ -1,0 +1,110 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+:root {
+    font-family:manrope, sans-serif;
+    font-size:28px;
+    text-align: center;;
+}
+html {
+    background-color:hsl(218, 23%, 16%);
+    /* min-height:fit-content; */
+    height:100vh;
+    width:100vw;
+    margin:0;
+}
+body {
+    height:100%;
+    width:100%;
+    margin:0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+/* ----- CARD ----- */
+/* ----- CARD ----- */
+.card {
+    background-color: hsl(217, 19%, 24%);
+    max-width:550px;
+    border-radius:15px;
+    padding:2rem 2rem;
+    margin:20px;
+    margin-bottom:50px;
+
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-evenly;
+    gap:1rem;
+    position:relative;
+    /* transition:all 1s; */
+    transition: height 1s;
+}
+.card *{
+    margin:0;
+}
+/* ----- TEXT ELEMENTS ----- */
+/* ----- TEXT ELEMENTS ----- */
+h1 {
+    color:hsl(150, 100%, 66%);
+    font-size:14px;
+    font-weight:600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    transition-duration: 1s;
+}
+#adviceNum {
+    transition: 1s;
+}
+p {
+    color:hsl(193, 38%, 86%);
+    transition: opacity 1s;
+}
+/* ----- DIVIDERS ----- */
+/* ----- DIVIDERS ----- */
+.divider {
+    width:100%;
+    margin: 20px 0
+}
+.mobile {
+    display:none;
+}
+/* ----- BUTTON DIV AND DIE IMG ----- */
+/* ----- BUTTON DIV AND DIE IMG ----- */
+.button {
+    background-color:hsl(150, 100%, 66%);
+    height:60px;
+    border-radius:50%;
+    aspect-ratio:1/1;
+    transition-duration: 0.1s;
+
+    position:absolute;
+    bottom:0;
+    transform:translate(0, 50%);
+}
+.button:hover {
+    cursor:pointer;
+    box-shadow: 0 0 30px 0 hsl(150, 100%, 66%);
+}
+.button:active{
+    transform:scale(95%) translate(0, 52.5%);;
+}
+
+.die {
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+}
+
+/* ----- SWITCH DIVIDER IMAGES ON MOBILE SCREENS ----- */
+/* ----- SWITCH DIVIDER IMAGES ON MOBILE SCREENS ----- */
+
+@media (max-width:430px){
+    .desktop {
+        display:none;
+    }
+    .mobile{
+        display:block;
+    }
+}
